@@ -1,0 +1,21 @@
+*~
+.DS_Store/
+
+# Virtual environment directory:
+/venv/
+
+# SQLite databases:
+db.sqlite3
+/database/
+
+# Project-level static files:
+/static/
+
+# Cached Python precompiled filess:
+**/__pycache__/
+*.pyc
+
+# PyCharm IDE user specific project configuration files:
+**/.idea/*.iws
+**/.idea/workspace.xml
+**/.idea/tasks.xml
