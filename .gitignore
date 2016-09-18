@@ -15,7 +15,9 @@ db.sqlite3
 **/__pycache__/
 *.pyc
 
-# PyCharm IDE user specific project configuration files:
+# File-based project format:
 **/.idea/*.iws
+
+# PyCharm IDE user specific project configuration files:
 **/.idea/workspace.xml
 **/.idea/tasks.xml
