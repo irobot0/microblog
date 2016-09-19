@@ -3,24 +3,16 @@ from django.core.paginator import PageNotAnInteger
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
+from django.views.generic import ListView
 
 from .models import Post
 
 
-def post_list(request):
-    published_posts = Post.published.all()
-    # Display 3 posts in each page.
-    paginator = Paginator(published_posts, 3)
-    page_num = request.GET.get('page')
-    try:
-        page = paginator.page(page_num)
-    except PageNotAnInteger:
-        # Deliver the first page when the argument is not an integer.
-        page = paginator.page(1)
-    except EmptyPage:
-        # Deliver the last page when the argument is out of range.
-        page = paginator.page(paginator.num_pages)
-    return render(request, 'blog/post/list.html', {'page': page})
+class PostListView(ListView):
+    queryset = Post.published.all()
+    context_object_name = 'page'
+    paginate_by = 3
+    template_name = 'blog/post/list.html'
 
 
 def post_detail(request, year, month, day, post):
