@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -41,3 +42,14 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    '''
+    Returns the canonical URL of the object.
+    '''
+    def get_absolute_url(self):
+        return reverse('blog:post_detail',
+                       args=[
+                           self.published_time.year,
+                           self.published_time.strftime('%m'),
+                           self.published_time.strftime('%d'),
+                           self.slug
+                       ])
